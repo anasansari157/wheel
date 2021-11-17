@@ -1,53 +1,38 @@
 import React from "react";
 
-import { Toastr } from "neetoui";
+import { Text, UserCircle, NeetoInsights } from "@bigbinary/neeto-icons";
+import { Sidebar } from "@bigbinary/neetoui/v2/layouts";
 import { withRouter } from "react-router-dom";
 
-import authenticationApi from "apis/authentication";
-import { resetAuthTokens } from "apis/axios";
-import { useAuthDispatch } from "contexts/auth";
-
-import AccountDropdown from "./AccountDropdown";
-import NavItem from "./NavItem";
-
 const NavBar = () => {
-  const authDispatch = useAuthDispatch();
-  const handleLogout = async () => {
-    try {
-      await authenticationApi.logout();
-      authDispatch({ type: "LOGOUT" });
-      resetAuthTokens();
-      window.location.href = "/";
-    } catch (error) {
-      Toastr.error(error);
-    }
-  };
-
   return (
-    <div className="bg-gray-100 nh-sidebar" key="sidebar">
-      <div className="nh-logo">
-        <div className="flex items-center justify-center w-8 h-8 rounded-md">
-          <i className="text-purple-500 ri-flashlight-fill ri-2x" />
-        </div>
-      </div>
-      <div className="flex flex-col items-center justify-between w-full h-full">
-        <div className="flex flex-col items-center justify-start w-full pt-4">
-          <NavItem title="Notes" link="/notes" icon="ri-file-text-line" />
-          <NavItem
-            title="Settings"
-            link="/settings"
-            icon="ri-settings-2-line"
-            subLinks={[
-              { title: "Change password", link: "/my/password/edit" },
-              { title: "My Profile", link: "/my/profile" },
-            ]}
-          />
-        </div>
-        <div className="mb-4">
-          <AccountDropdown handleLogout={handleLogout} />
-        </div>
-      </div>
-    </div>
+    <Sidebar
+      collapsible={true}
+      appName="NeetoUI"
+      navLinks={[
+        {
+          icon: () => <Text size={24} />,
+          label: "Notes",
+          to: "/notes",
+        },
+        {
+          icon: () => <UserCircle size={24} />,
+          label: "Contacts",
+          to: "/contacts",
+        },
+        {
+          icon: () => <NeetoInsights size={24} />,
+          label: "Settings",
+          to: "/settings",
+        },
+      ]}
+      profileInfo={{
+        dropdownProps: [{ label: "Edit" }, { label: "Logout" }],
+        imageUrl:
+          "https://images.unsplash.com/photo-1603570388466-eb4fe5617f0d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
+        name: "Oliver Smith",
+      }}
+    />
   );
 };
 
