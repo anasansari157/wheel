@@ -1,23 +1,23 @@
 import React, { useState, useEffect } from "react";
 
+import { Search } from "@bigbinary/neeto-icons";
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { Button, PageLoader } from "neetoui";
-import { Header, SubHeader } from "neetoui/layouts";
+import { PageLoader } from "neetoui";
+import { Header } from "neetoui/layouts";
+import { Input, Button } from "neetoui/v2";
 
 import notesApi from "apis/notes";
 import EmptyState from "components/Common/EmptyState";
 
-import DeleteAlert from "./DeleteAlert";
 import NewNotePane from "./NewNotePane";
 import NoteTable from "./NoteTable";
+import Tabs from "./Tabs";
 
 const Notes = () => {
   const [loading, setLoading] = useState(true);
   const [showNewNotePane, setShowNewNotePane] = useState(false);
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [selectedNoteIds, setSelectedNoteIds] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
 
   useEffect(() => {
     fetchNotes();
@@ -35,63 +35,60 @@ const Notes = () => {
     }
   };
 
+  const SearchBar = () => (
+    <Input
+      className="pr-3"
+      prefix={<Search />}
+      placeholder="Search Name, Email, Phone number, etc"
+    />
+  );
+
   if (loading) {
     return <PageLoader />;
   }
 
   return (
-    <>
-      <Header
-        title="Notes"
-        actionBlock={
-          <Button
-            onClick={() => setShowNewNotePane(true)}
-            label="Add New Note"
-            icon="ri-add-line"
-          />
-        }
+    <div className="flex w-full">
+      <Tabs
+        setIsSearchCollapsed={setIsSearchCollapsed}
+        isSearchCollapsed={isSearchCollapsed}
       />
-      {notes.length ? (
-        <>
-          <SubHeader
-            searchProps={{
-              value: searchTerm,
-              onChange: e => setSearchTerm(e.target.value),
-              clear: () => setSearchTerm(""),
-            }}
-            deleteButtonProps={{
-              onClick: () => setShowDeleteAlert(true),
-              disabled: !selectedNoteIds.length,
-            }}
-          />
-          <NoteTable
-            selectedNoteIds={selectedNoteIds}
-            setSelectedNoteIds={setSelectedNoteIds}
-            notes={notes}
-          />
-        </>
-      ) : (
-        <EmptyState
-          image={EmptyNotesListImage}
-          title="Looks like you don't have any notes!"
-          subtitle="Add your notes to send customized emails to them."
-          primaryAction={() => setShowNewNotePane(true)}
-          primaryActionLabel="Add New Note"
+      <div className="flex-auto">
+        <Header
+          title="All Notes"
+          actionBlock={
+            <>
+              <SearchBar />
+              <Button
+                onClick={() => setShowNewNotePane(true)}
+                label="Add Note"
+                icon="ri-add-line"
+                style="primary"
+                size="large"
+              />
+            </>
+          }
         />
-      )}
-      <NewNotePane
-        showPane={showNewNotePane}
-        setShowPane={setShowNewNotePane}
-        fetchNotes={fetchNotes}
-      />
-      {showDeleteAlert && (
-        <DeleteAlert
-          selectedNoteIds={selectedNoteIds}
-          onClose={() => setShowDeleteAlert(false)}
-          refetch={fetchNotes}
+        {notes.length ? (
+          <>
+            <NoteTable notes={notes} />
+          </>
+        ) : (
+          <EmptyState
+            image={EmptyNotesListImage}
+            title="Looks like you don't have any notes!"
+            subtitle="Add your notes to send customized emails to them."
+            primaryAction={() => setShowNewNotePane(true)}
+            primaryActionLabel="Add New Note"
+          />
+        )}
+        <NewNotePane
+          showPane={showNewNotePane}
+          setShowPane={setShowNewNotePane}
+          fetchNotes={fetchNotes}
         />
-      )}
-    </>
+      </div>
+    </div>
   );
 };
 
