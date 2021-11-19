@@ -1,9 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
-import { Typography, Button, Avatar } from "neetoui/v2";
+import { Typography, Button, Avatar, Toastr, Dropdown } from "neetoui/v2";
+
+import DeleteAlert from "./DeleteAlert";
 
 export default function Card({ title, description }) {
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+
+  const handleDelete = () => {
+    setShowDeleteAlert(false);
+    Toastr.success("Note deleted successfully!");
+  };
+
+  const VerticalMenu = () => {
+    return (
+      <Dropdown
+        icon={() => <MenuVertical size={20} />}
+        buttonStyle="text"
+        buttonProps={{
+          onClick: () => {},
+        }}
+        // buttonStyle="primary"
+        onClose={() => {}}
+        position="bottom-end"
+      >
+        <li>Edit</li>
+        <li onClick={() => setShowDeleteAlert(!showDeleteAlert)}>Delete</li>
+      </Dropdown>
+    );
+  };
+
   const TimeLog = () => (
     <div className="flex items-center">
       <Clock color="#68737D" size={13} />
@@ -28,7 +55,7 @@ export default function Card({ title, description }) {
           <Typography style="h4" weight="semibold">
             {title}
           </Typography>
-          <MenuVertical size={20} />
+          <VerticalMenu />
         </div>
         <Typography style="body2" weight="light" className="text-gray-500">
           {description}
@@ -41,6 +68,13 @@ export default function Card({ title, description }) {
           <TimeLog />
         </div>
       </div>
+
+      <DeleteAlert
+        onClose={() => setShowDeleteAlert(false)}
+        // refetch={fetchNotes}
+        isOpen={showDeleteAlert}
+        handleDelete={handleDelete}
+      />
     </>
   );
 }
