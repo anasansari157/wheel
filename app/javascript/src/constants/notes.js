@@ -13,4 +13,32 @@ export const NOTES = [
   },
 ];
 
-export const CONTACTS = ["Shahrukh"];
+export const CONTACTS_DROPDOWN_VALUES = [
+  {
+    label: "Mohd",
+    value: "mohd",
+  },
+  {
+    label: "Anas",
+    value: "anas",
+  },
+  {
+    label: "Ansari",
+    value: "ansari",
+  },
+];
+
+export const TAGS_DROPDOWN_VALUES = [
+  {
+    label: "Funny",
+    value: "funny",
+  },
+  {
+    label: "Important",
+    value: "important",
+  },
+  {
+    label: "Tech",
+    value: "tech",
+  },
+];
