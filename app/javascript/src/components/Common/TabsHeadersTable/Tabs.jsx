@@ -1,17 +1,25 @@
 import React from "react";
 
 import { Search, Plus, Settings } from "@bigbinary/neeto-icons";
-import { MenuBar } from "@bigbinary/neetoui/v2/layouts";
 import { Typography } from "neetoui/v2";
+import { MenuBar } from "neetoui/v2/layouts";
 
-export default function Tabs({ setIsSearchCollapsed, isSearchCollapsed }) {
+export default function Tabs({
+  setIsSearchCollapsed,
+  isSearchCollapsed,
+  title,
+  tabs,
+  segments,
+  tags,
+}) {
   return (
     <>
-      <MenuBar showMenu={true} title="Notes">
-        <MenuBar.Block label="All" count={200} />
-        <MenuBar.Block label="Users" count={80} />
-        <MenuBar.Block label="Leads" count={60} />
-        <MenuBar.Block label="Visitors" count={60} />
+      <MenuBar showMenu={true} title={title}>
+        {tabs &&
+          tabs.map((tab, index) => (
+            <MenuBar.Block label={tab.label} count={tab.count} key={index} />
+          ))}
+
         <MenuBar.SubTitle
           iconProps={[
             {
@@ -35,9 +43,14 @@ export default function Tabs({ setIsSearchCollapsed, isSearchCollapsed }) {
           onCollapse={() => setIsSearchCollapsed(true)}
         />
 
-        <MenuBar.Block label="Europe" count={80} />
-        <MenuBar.Block label="Middle-East" count={60} />
-        <MenuBar.Block label="Asia" count={60} />
+        {segments &&
+          segments.map((segment, index) => (
+            <MenuBar.Block
+              label={segment.label}
+              count={segment.count}
+              key={index}
+            />
+          ))}
 
         <MenuBar.SubTitle
           iconProps={[
@@ -62,9 +75,10 @@ export default function Tabs({ setIsSearchCollapsed, isSearchCollapsed }) {
           </Typography>
         </MenuBar.SubTitle>
 
-        <MenuBar.Block label="Sales" count={80} />
-        <MenuBar.Block label="Finance" count={60} />
-        <MenuBar.Block label="User Experience" count={60} />
+        {tags &&
+          tags.map((tag, index) => (
+            <MenuBar.Block label={tag.label} count={tag.count} key={index} />
+          ))}
       </MenuBar>
     </>
   );
