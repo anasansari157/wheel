@@ -4,7 +4,7 @@ import { Search } from "@bigbinary/neeto-icons";
 import { Header } from "neetoui/layouts";
 import { Input, Button } from "neetoui/v2";
 
-const TopHeader = ({ itemName, setShowNewNotePane }) => {
+const TopHeader = ({ itemName, setShowNewPane }) => {
   const SearchBar = () => (
     <Input
       className="pr-3"
@@ -20,7 +20,7 @@ const TopHeader = ({ itemName, setShowNewNotePane }) => {
         <>
           <SearchBar />
           <Button
-            onClick={() => setShowNewNotePane(true)}
+            onClick={() => setShowNewPane(true)}
             label={`Add ${itemName}`}
             icon="ri-add-line"
             style="primary"

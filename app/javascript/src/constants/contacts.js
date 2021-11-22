@@ -11,6 +11,24 @@ export const CONTACTS = [
     email: "tmunfordr@aboutads.info",
     created_at: "2018-01-01",
   },
+  {
+    name: "Zacharius",
+    role: "Co-Founder",
+    email: "cofouneder@aboutads.info",
+    created_at: "2018-01-01",
+  },
+  {
+    name: "Nikea",
+    role: "Brand Manager",
+    email: "nikea@aboutads.info",
+    created_at: "2001-01-01",
+  },
+  {
+    name: "Lury",
+    role: "HR",
+    email: "lury@aboutads.info",
+    created_at: "2007-01-01",
+  },
 ];
 
 export const TABS = [
@@ -23,3 +41,18 @@ export const TABS = [
 export const SEGMENTS = [];
 
 export const TAGS = [];
+
+export const ROLE_DROPDOWN_VALUES = [
+  {
+    label: "Funny",
+    value: "funny",
+  },
+  {
+    label: "Important",
+    value: "important",
+  },
+  {
+    label: "Tech",
+    value: "tech",
+  },
+];

@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { MenuHorizontal } from "@bigbinary/neeto-icons";
-import { Table, Avatar, Typography } from "neetoui/v2";
+import { Table, Avatar, Typography, Toastr } from "neetoui/v2";
+
+import DeleteAlert from "components/Common/DeleteAlert";
 
 const ContactsTable = ({ contacts }) => {
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
+
+  const handleDelete = () => {
+    setIsAlertOpen(false);
+    Toastr.success("Contact deleted successfully!");
+  };
   return (
     <>
       <Table
@@ -47,7 +55,10 @@ const ContactsTable = ({ contacts }) => {
             dataIndex: "options",
             key: "options",
             render: () => (
-              <MenuHorizontal onClick={() => {}} className="cursor-pointer" />
+              <MenuHorizontal
+                onClick={() => setIsAlertOpen(!isAlertOpen)}
+                className="cursor-pointer"
+              />
             ),
             title: "",
             width: 150,
@@ -59,6 +70,13 @@ const ContactsTable = ({ contacts }) => {
         onRowClick={function noRefCheck() {}}
         onRowSelect={function noRefCheck() {}}
         rowData={contacts}
+      />
+
+      <DeleteAlert
+        onClose={() => setIsAlertOpen(false)}
+        isOpen={isAlertOpen}
+        handleDelete={handleDelete}
+        itemName="contact"
       />
     </>
   );

@@ -6,10 +6,10 @@ import { Typography, Button, Avatar, Toastr, Dropdown } from "neetoui/v2";
 import DeleteAlert from "../../Common/DeleteAlert";
 
 export default function Card({ title, description }) {
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const handleDelete = () => {
-    setShowDeleteAlert(false);
+    setIsAlertOpen(false);
     Toastr.success("Note deleted successfully!");
   };
 
@@ -25,7 +25,7 @@ export default function Card({ title, description }) {
         position="bottom-end"
       >
         <li>Edit</li>
-        <li onClick={() => setShowDeleteAlert(!showDeleteAlert)}>Delete</li>
+        <li onClick={() => setIsAlertOpen(!isAlertOpen)}>Delete</li>
       </Dropdown>
     );
   };
@@ -69,8 +69,8 @@ export default function Card({ title, description }) {
       </div>
 
       <DeleteAlert
-        onClose={() => setShowDeleteAlert(false)}
-        isOpen={showDeleteAlert}
+        onClose={() => setIsAlertOpen(false)}
+        isOpen={isAlertOpen}
         handleDelete={handleDelete}
         itemName="note"
       />

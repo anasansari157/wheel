@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import NewNotePane from "components/Dashboard/Notes/NewNotePane";
+import NewPane from "components/Common/NewPane";
 
 import Tabs from "./Tabs";
 import TopHeader from "./TopHeader";
 
 const TabsHeadersTable = ({ tabs, segments, tags, itemName, createTable }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
-  const [showNewNotePane, setShowNewNotePane] = useState(false);
+  const [showNewPane, setShowNewPane] = useState(false);
 
   return (
     <div className="flex w-full">
@@ -20,17 +20,15 @@ const TabsHeadersTable = ({ tabs, segments, tags, itemName, createTable }) => {
         title={itemName}
       />
       <div className="flex-auto">
-        <TopHeader
-          itemName={itemName}
-          setShowNewNotePane={setShowNewNotePane}
-        />
+        <TopHeader itemName={itemName} setShowNewPane={setShowNewPane} />
 
         {createTable()}
 
-        <NewNotePane
-          showPane={showNewNotePane}
-          setShowPane={setShowNewNotePane}
+        <NewPane
+          showPane={showNewPane}
+          setShowPane={setShowNewPane}
           fetchNotes={() => {}}
+          itemName={itemName}
         />
       </div>
     </div>
