@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
 import { Typography, Button, Avatar, Toastr, Dropdown } from "neetoui/v2";
 
-import DeleteAlert from "./DeleteAlert";
+import DeleteAlert from "../../Common/DeleteAlert";
 
 export default function Card({ title, description }) {
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
@@ -21,7 +21,6 @@ export default function Card({ title, description }) {
         buttonProps={{
           onClick: () => {},
         }}
-        // buttonStyle="primary"
         onClose={() => {}}
         position="bottom-end"
       >
@@ -71,9 +70,9 @@ export default function Card({ title, description }) {
 
       <DeleteAlert
         onClose={() => setShowDeleteAlert(false)}
-        // refetch={fetchNotes}
         isOpen={showDeleteAlert}
         handleDelete={handleDelete}
+        itemName="note"
       />
     </>
   );
