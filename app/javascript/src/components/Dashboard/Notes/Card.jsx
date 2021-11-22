@@ -47,25 +47,38 @@ export default function Card({ title, description }) {
     </div>
   );
 
+  const CardHeader = ({ title }) => (
+    <div className="card-header my-1 flex justify-between">
+      <Typography style="h4" weight="semibold">
+        {title}
+      </Typography>
+      <VerticalMenu />
+    </div>
+  );
+
+  const CardBody = ({ description }) => (
+    <Typography style="body2" weight="light" className="text-gray-500">
+      {description}
+    </Typography>
+  );
+
+  const CardFooter = ({ buttonLabel }) => (
+    <>
+      <hr className="my-2" />
+
+      <div className="card-footer flex my-2 justify-between items-center">
+        <Button label={buttonLabel} style="secondary" />
+        <TimeLog />
+      </div>
+    </>
+  );
+
   return (
     <>
       <div className="card p-4 border neeto-ui-shadow-s my-4">
-        <div className="card-header my-1 flex justify-between">
-          <Typography style="h4" weight="semibold">
-            {title}
-          </Typography>
-          <VerticalMenu />
-        </div>
-        <Typography style="body2" weight="light" className="text-gray-500">
-          {description}
-        </Typography>
-
-        <hr className="my-2" />
-
-        <div className="card-footer flex my-2 justify-between items-center">
-          <Button label="Getting Started" style="secondary" />
-          <TimeLog />
-        </div>
+        <CardHeader title={title} />
+        <CardBody description={description} />
+        <CardFooter buttonLabel="Getting Started" />
       </div>
 
       <DeleteAlert

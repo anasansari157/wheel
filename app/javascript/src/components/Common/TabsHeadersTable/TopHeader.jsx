@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Search } from "@bigbinary/neeto-icons";
+import { Search, Plus } from "@bigbinary/neeto-icons";
 import { Header } from "neetoui/layouts";
 import { Input, Button } from "neetoui/v2";
 
@@ -22,7 +22,7 @@ const TopHeader = ({ itemName, setShowNewPane }) => {
           <Button
             onClick={() => setShowNewPane(true)}
             label={`Add ${itemName}`}
-            icon="ri-add-line"
+            icon={Plus}
             style="primary"
             size="large"
           />

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import EmptyNotesListImage from "images/EmptyNotesList";
-import { PageLoader } from "neetoui";
+import { PageLoader } from "neetoui/v2";
 
 import EmptyState from "components/Common/EmptyState";
 import TabsHeadersTable from "components/Common/TabsHeadersTable";

@@ -29,7 +29,6 @@ export default function NewNoteForm({ onClose }) {
         />
       </div>
     );
-
     return (
       <>
         {createDrowpdown(
@@ -59,15 +58,9 @@ export default function NewNoteForm({ onClose }) {
       })}
     >
       {({ isSubmitting }) => (
-        <Form>
-          <Input label="Title" name="title" className="mb-6" required />
-          <Textarea
-            label="Description"
-            name="description"
-            rows={1}
-            className="mb-6"
-            required
-          />
+        <Form className="space-y-6">
+          <Input label="Title" name="title" required />
+          <Textarea label="Description" name="description" rows={1} required />
 
           <Dropdowns />
 
