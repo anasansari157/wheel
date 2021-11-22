@@ -5,13 +5,13 @@ import { PageLoader } from "neetoui";
 
 import EmptyState from "components/Common/EmptyState";
 import TabsHeadersTable from "components/Common/TabsHeadersTable";
-import { SEGMENTS, TABS, TAGS, NOTES } from "constants/notes";
+import { CONTACTS, SEGMENTS, TABS, TAGS } from "constants/contacts";
 
-import NoteTable from "./NoteTable";
+import ContactsTable from "./ContactsTable";
 
-const Notes = () => {
-  const [loading, setLoading] = useState(false);
-  const [notes, setNotes] = useState([]);
+const Contacts = () => {
+  const [loading, setLoading] = useState(true);
+  const [contacts, setContacts] = useState([]);
 
   useEffect(() => {
     fetchNotes();
@@ -20,7 +20,7 @@ const Notes = () => {
   const fetchNotes = async () => {
     try {
       setLoading(true);
-      setNotes(NOTES);
+      setContacts(CONTACTS);
     } catch (error) {
       logger.error(error);
     } finally {
@@ -32,18 +32,18 @@ const Notes = () => {
     return <PageLoader />;
   }
 
-  const createTable = notes =>
-    notes.length ? (
-      <>
-        <NoteTable notes={notes} />
-      </>
+  const createContactsTable = contacts =>
+    contacts.length ? (
+      <div className="m-5">
+        <ContactsTable contacts={contacts} />
+      </div>
     ) : (
       <EmptyState
         image={EmptyNotesListImage}
-        title="Looks like you don't have any notes!"
-        subtitle="Add your notes to send customized emails to them."
+        title="Looks like you don't have any contacts!"
+        subtitle="Add your contacts to send customized emails to them."
         primaryAction={() => {}}
-        primaryActionLabel="Add New Note"
+        primaryActionLabel="Add New Contact"
       />
     );
 
@@ -53,11 +53,11 @@ const Notes = () => {
         tabs={TABS}
         segments={SEGMENTS}
         tags={TAGS}
-        itemName="Note"
-        createTable={() => createTable(notes)}
+        itemName="Contact"
+        createTable={() => createContactsTable(contacts)}
       />
     </>
   );
 };
 
-export default Notes;
+export default Contacts;
