@@ -6,10 +6,10 @@ import { Typography, Button, Avatar, Toastr, Dropdown } from "neetoui/v2";
 import DeleteAlert from "../../Common/DeleteAlert";
 
 export default function Card({ title, description }) {
-  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [isAlertOpen, setIsAlertOpen] = useState(false);
 
   const handleDelete = () => {
-    setShowDeleteAlert(false);
+    setIsAlertOpen(false);
     Toastr.success("Note deleted successfully!");
   };
 
@@ -25,7 +25,7 @@ export default function Card({ title, description }) {
         position="bottom-end"
       >
         <li>Edit</li>
-        <li onClick={() => setShowDeleteAlert(!showDeleteAlert)}>Delete</li>
+        <li onClick={() => setIsAlertOpen(!isAlertOpen)}>Delete</li>
       </Dropdown>
     );
   };
@@ -47,30 +47,43 @@ export default function Card({ title, description }) {
     </div>
   );
 
+  const CardHeader = ({ title }) => (
+    <div className="card-header my-1 flex justify-between">
+      <Typography style="h4" weight="semibold">
+        {title}
+      </Typography>
+      <VerticalMenu />
+    </div>
+  );
+
+  const CardBody = ({ description }) => (
+    <Typography style="body2" weight="light" className="text-gray-500">
+      {description}
+    </Typography>
+  );
+
+  const CardFooter = ({ buttonLabel }) => (
+    <>
+      <hr className="my-2" />
+
+      <div className="card-footer flex my-2 justify-between items-center">
+        <Button label={buttonLabel} style="secondary" />
+        <TimeLog />
+      </div>
+    </>
+  );
+
   return (
     <>
       <div className="card p-4 border neeto-ui-shadow-s my-4">
-        <div className="card-header my-1 flex justify-between">
-          <Typography style="h4" weight="semibold">
-            {title}
-          </Typography>
-          <VerticalMenu />
-        </div>
-        <Typography style="body2" weight="light" className="text-gray-500">
-          {description}
-        </Typography>
-
-        <hr className="my-2" />
-
-        <div className="card-footer flex my-2 justify-between items-center">
-          <Button label="Getting Started" style="secondary" />
-          <TimeLog />
-        </div>
+        <CardHeader title={title} />
+        <CardBody description={description} />
+        <CardFooter buttonLabel="Getting Started" />
       </div>
 
       <DeleteAlert
-        onClose={() => setShowDeleteAlert(false)}
-        isOpen={showDeleteAlert}
+        onClose={() => setIsAlertOpen(false)}
+        isOpen={isAlertOpen}
         handleDelete={handleDelete}
         itemName="note"
       />

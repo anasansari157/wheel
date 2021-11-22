@@ -1,31 +1,16 @@
 import React from "react";
 
-import { Text, UserCircle, NeetoInsights } from "@bigbinary/neeto-icons";
 import { Sidebar } from "neetoui/v2/layouts";
 import { withRouter } from "react-router-dom";
+
+import { NAV_LINKS } from "constants/navLinks";
 
 const NavBar = () => {
   return (
     <Sidebar
       collapsible={true}
       appName="NeetoUI"
-      navLinks={[
-        {
-          icon: () => <Text size={24} />,
-          label: "Notes",
-          to: "/notes",
-        },
-        {
-          icon: () => <UserCircle size={24} />,
-          label: "Contacts",
-          to: "/contacts",
-        },
-        {
-          icon: () => <NeetoInsights size={24} />,
-          label: "Settings",
-          to: "/settings",
-        },
-      ]}
+      navLinks={NAV_LINKS}
       profileInfo={{
         dropdownProps: [{ label: "Profile" }, { label: "Logout" }],
         imageUrl:
