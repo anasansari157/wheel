@@ -2,6 +2,7 @@ import React from "react";
 
 import { MenuHorizontal } from "@bigbinary/neeto-icons";
 import { Avatar, Typography } from "neetoui/v2";
+import * as Yup from "yup";
 
 export const CONTACTS = [
   {
@@ -111,3 +112,17 @@ export const columnData = (isAlertOpen, setIsAlertOpen) => [
     width: 150,
   },
 ];
+
+export const CONTACT_FORM_INITIAL_VALUES = {
+  first_name: "",
+  last_name: "",
+  email: "",
+  role: "",
+};
+
+export const CONTACT_FORM_VALIDATION_SCHEMA = Yup.object({
+  first_name: Yup.string().required("First Name is required"),
+  last_name: Yup.string().required("Last Name is required"),
+  email: Yup.string().required("Email is required"),
+  role: Yup.object().required("Role is required"),
+});

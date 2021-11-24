@@ -4,9 +4,11 @@ import { Formik, Form } from "formik";
 import { Toastr, Button } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 
-import { ROLE_DROPDOWN_VALUES } from "components/Dashboard/Contacts/constants";
-import formInitialValues from "constants/formInitialValues";
-import formValidationSchemas from "constants/formValidationSchemas";
+import {
+  CONTACT_FORM_INITIAL_VALUES,
+  CONTACT_FORM_VALIDATION_SCHEMA,
+  ROLE_DROPDOWN_VALUES,
+} from "components/Dashboard/Contacts/constants";
 
 export default function NewContactForm({ onClose }) {
   const handleSubmit = () => {
@@ -16,9 +18,9 @@ export default function NewContactForm({ onClose }) {
 
   return (
     <Formik
-      initialValues={formInitialValues.newContactForm}
+      initialValues={CONTACT_FORM_INITIAL_VALUES}
       onSubmit={handleSubmit}
-      validationSchema={formValidationSchemas.newContactForm}
+      validationSchema={CONTACT_FORM_VALIDATION_SCHEMA}
     >
       {({ isSubmitting }) => (
         <Form className="space-y-6">
