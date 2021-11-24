@@ -1,3 +1,8 @@
+import React from "react";
+
+import { Avatar, Typography } from "neetoui/v2";
+import { MenuHorizontal } from "neetoui_icons";
+
 export const CONTACTS = [
   {
     name: "John Doe",
@@ -54,5 +59,55 @@ export const ROLE_DROPDOWN_VALUES = [
   {
     label: "Tech",
     value: "tech",
+  },
+];
+
+export const columnData = [
+  {
+    dataIndex: "name",
+    key: "name",
+    render: (name, data) => (
+      <div className="name-role-avatar-container flex align-items">
+        <Avatar
+          size="medium"
+          user={{
+            name: name,
+          }}
+        />
+        <div className="name-role-container ml-2">
+          <Typography style="h5">{name}</Typography>
+
+          <Typography style="h6" weight="light">
+            {data.role}
+          </Typography>
+        </div>
+      </div>
+    ),
+    title: "Name and Role",
+    width: 150,
+  },
+  {
+    dataIndex: "email",
+    key: "email",
+    title: "Email",
+    width: 150,
+  },
+  {
+    dataIndex: "created_at",
+    key: "created_at",
+    title: "Created at",
+    width: 250,
+  },
+  {
+    dataIndex: "options",
+    key: "options",
+    render: () => (
+      <MenuHorizontal
+        onClick={(setIsAlertOpen, isAlertOpen) => setIsAlertOpen(!isAlertOpen)}
+        className="cursor-pointer"
+      />
+    ),
+    title: "",
+    width: 150,
   },
 ];

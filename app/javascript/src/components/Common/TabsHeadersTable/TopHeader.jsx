@@ -1,10 +1,10 @@
 import React from "react";
 
-import { Search, Plus } from "@bigbinary/neeto-icons";
 import { Header } from "neetoui/layouts";
 import { Input, Button } from "neetoui/v2";
+import { Search, Plus, HamburgerMenu } from "neetoui_icons";
 
-const TopHeader = ({ itemName, setShowNewPane }) => {
+const TopHeader = ({ itemName, setIsNewPaneOpen }) => {
   const SearchBar = () => (
     <Input
       className="pr-3"
@@ -20,7 +20,7 @@ const TopHeader = ({ itemName, setShowNewPane }) => {
         <>
           <SearchBar />
           <Button
-            onClick={() => setShowNewPane(true)}
+            onClick={() => setIsNewPaneOpen(true)}
             label={`Add ${itemName}`}
             icon={Plus}
             style="primary"
@@ -28,6 +28,7 @@ const TopHeader = ({ itemName, setShowNewPane }) => {
           />
         </>
       }
+      menuBarToggle={() => <HamburgerMenu />}
     />
   );
 };

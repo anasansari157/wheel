@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Text, UserCircle, NeetoInsights } from "@bigbinary/neeto-icons";
+import { Text, UserCircle, NeetoInsights } from "neetoui_icons";
 
 export const NAV_LINKS = [
   {

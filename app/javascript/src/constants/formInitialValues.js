@@ -13,4 +13,10 @@ export default {
     password: "",
     passwordConfirmation: "",
   },
+  newContactForm: {
+    first_name: "",
+    last_name: "",
+    email: "",
+    role: "",
+  },
 };

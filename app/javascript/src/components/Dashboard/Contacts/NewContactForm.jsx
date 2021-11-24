@@ -3,9 +3,10 @@ import React from "react";
 import { Formik, Form } from "formik";
 import { Toastr, Button } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
-import * as yup from "yup";
 
 import { ROLE_DROPDOWN_VALUES } from "constants/contacts";
+import formInitialValues from "constants/formInitialValues";
+import formValidationSchemas from "constants/formValidationSchemas";
 
 export default function NewContactForm({ onClose }) {
   const handleSubmit = () => {
@@ -15,19 +16,9 @@ export default function NewContactForm({ onClose }) {
 
   return (
     <Formik
-      initialValues={{
-        first_name: "",
-        last_name: "",
-        email: "",
-        role: "",
-      }}
+      initialValues={formInitialValues.newContactForm}
       onSubmit={handleSubmit}
-      validationSchema={yup.object({
-        first_name: yup.string().required("First Name is required"),
-        last_name: yup.string().required("Last Name is required"),
-        email: yup.string().required("Email is required"),
-        role: yup.object().required("Role is required"),
-      })}
+      validationSchema={formValidationSchemas.newContactForm}
     >
       {({ isSubmitting }) => (
         <Form className="space-y-6">
