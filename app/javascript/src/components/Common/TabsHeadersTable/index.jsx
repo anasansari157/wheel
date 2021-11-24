@@ -7,7 +7,8 @@ import TopHeader from "./TopHeader";
 
 const TabsHeadersTable = ({ tabs, segments, tags, itemName, createTable }) => {
   const [isSearchCollapsed, setIsSearchCollapsed] = useState(true);
-  const [showNewPane, setShowNewPane] = useState(false);
+  const [isNewPaneOpen, setIsNewPaneOpen] = useState(false);
+  const [isTabsMenuOpen, setIsTabsMenuOpen] = useState(true);
 
   return (
     <div className="flex w-full">
@@ -18,15 +19,21 @@ const TabsHeadersTable = ({ tabs, segments, tags, itemName, createTable }) => {
         segments={segments}
         tags={tags}
         title={itemName}
+        isTabsMenuOpen={isTabsMenuOpen}
       />
       <div className="flex-auto">
-        <TopHeader itemName={itemName} setShowNewPane={setShowNewPane} />
+        <TopHeader
+          itemName={itemName}
+          setIsNewPaneOpen={setIsNewPaneOpen}
+          isTabsMenuOpen={isTabsMenuOpen}
+          setIsTabsMenuOpen={setIsTabsMenuOpen}
+        />
 
         {createTable()}
 
         <NewPane
-          showPane={showNewPane}
-          setShowPane={setShowNewPane}
+          showPane={isNewPaneOpen}
+          setShowPane={setIsNewPaneOpen}
           fetchNotes={() => {}}
           itemName={itemName}
         />

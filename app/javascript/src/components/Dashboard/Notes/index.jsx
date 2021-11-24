@@ -5,7 +5,12 @@ import { PageLoader } from "neetoui/v2";
 
 import EmptyState from "components/Common/EmptyState";
 import TabsHeadersTable from "components/Common/TabsHeadersTable";
-import { SEGMENTS, TABS, TAGS, NOTES } from "constants/notes";
+import {
+  SEGMENTS,
+  TABS,
+  TAGS,
+  NOTES,
+} from "components/Dashboard/Notes/constants";
 
 import NoteTable from "./NoteTable";
 

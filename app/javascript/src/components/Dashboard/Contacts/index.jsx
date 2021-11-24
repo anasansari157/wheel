@@ -5,7 +5,12 @@ import { PageLoader } from "neetoui";
 
 import EmptyState from "components/Common/EmptyState";
 import TabsHeadersTable from "components/Common/TabsHeadersTable";
-import { CONTACTS, SEGMENTS, TABS, TAGS } from "constants/contacts";
+import {
+  CONTACTS,
+  SEGMENTS,
+  TABS,
+  TAGS,
+} from "components/Dashboard/Contacts/constants";
 
 import ContactsTable from "./ContactsTable";
 

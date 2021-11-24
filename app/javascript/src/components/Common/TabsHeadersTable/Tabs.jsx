@@ -11,10 +11,11 @@ export default function Tabs({
   tabs,
   segments,
   tags,
+  isTabsMenuOpen,
 }) {
   return (
     <>
-      <MenuBar showMenu={true} title={title}>
+      <MenuBar showMenu={isTabsMenuOpen} title={title}>
         {tabs &&
           tabs.map((tab, index) => (
             <MenuBar.Block label={tab.label} count={tab.count} key={index} />

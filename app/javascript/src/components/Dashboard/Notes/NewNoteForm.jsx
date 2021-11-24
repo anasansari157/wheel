@@ -1,15 +1,14 @@
 import React from "react";
 
 import { Formik, Form } from "formik";
-import { Input, Textarea } from "neetoui/formik";
 import { Toastr, Button } from "neetoui/v2";
-import { Select } from "neetoui/v2/formik";
+import { Select, Input, Textarea } from "neetoui/v2/formik";
 import * as yup from "yup";
 
 import {
   CONTACTS_DROPDOWN_VALUES,
   TAGS_DROPDOWN_VALUES,
-} from "constants/notes";
+} from "components/Dashboard/Notes/constants";
 
 export default function NewNoteForm({ onClose }) {
   const handleSubmit = () => {

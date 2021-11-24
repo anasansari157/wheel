@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Clock, MenuVertical } from "@bigbinary/neeto-icons";
 import { Typography, Button, Avatar, Toastr, Dropdown } from "neetoui/v2";
 
-import DeleteAlert from "../../Common/DeleteAlert";
+import DeleteAlert from "components/Common/DeleteAlert";
 
 export default function Card({ title, description }) {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
