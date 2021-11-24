@@ -1,7 +1,7 @@
 import React from "react";
 
+import { MenuHorizontal } from "@bigbinary/neeto-icons";
 import { Avatar, Typography } from "neetoui/v2";
-import { MenuHorizontal } from "neetoui_icons";
 
 export const CONTACTS = [
   {
@@ -62,7 +62,7 @@ export const ROLE_DROPDOWN_VALUES = [
   },
 ];
 
-export const columnData = [
+export const columnData = (isAlertOpen, setIsAlertOpen) => [
   {
     dataIndex: "name",
     key: "name",
@@ -103,7 +103,7 @@ export const columnData = [
     key: "options",
     render: () => (
       <MenuHorizontal
-        onClick={(setIsAlertOpen, isAlertOpen) => setIsAlertOpen(!isAlertOpen)}
+        onClick={() => setIsAlertOpen(!isAlertOpen)}
         className="cursor-pointer"
       />
     ),

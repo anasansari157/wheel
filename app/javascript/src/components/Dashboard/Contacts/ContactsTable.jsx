@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Table, Toastr } from "neetoui/v2";
 
 import DeleteAlert from "components/Common/DeleteAlert";
-import { columnData } from "constants/contacts";
+import { columnData } from "components/Dashboard/Contacts/constants";
 
 const ContactsTable = ({ contacts }) => {
   const [isAlertOpen, setIsAlertOpen] = useState(false);
@@ -15,7 +15,7 @@ const ContactsTable = ({ contacts }) => {
   return (
     <>
       <Table
-        columnData={columnData}
+        columnData={columnData(isAlertOpen, setIsAlertOpen)}
         currentPageNumber={23}
         defaultPageSize={10}
         handlePageChange={function noRefCheck() {}}

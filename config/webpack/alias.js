@@ -8,9 +8,8 @@ module.exports = {
       contexts: "src/contexts",
       reducers: "src/reducers",
       neetoui: "@bigbinary/neetoui",
-      neetoui_icons: "@bigbinary/neetoui-icons",
       helpers: "src/helpers",
-      common_components: "./../Common",
+      common_components: "components/Common",
     }
   }
 };

@@ -8,7 +8,7 @@ import * as yup from "yup";
 import {
   CONTACTS_DROPDOWN_VALUES,
   TAGS_DROPDOWN_VALUES,
-} from "constants/notes";
+} from "components/Dashboard/Notes/constants";
 
 export default function NewNoteForm({ onClose }) {
   const handleSubmit = () => {

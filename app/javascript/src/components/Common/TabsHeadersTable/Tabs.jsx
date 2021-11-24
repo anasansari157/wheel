@@ -1,8 +1,8 @@
 import React from "react";
 
+import { Search, Plus, Settings } from "@bigbinary/neeto-icons";
 import { Typography } from "neetoui/v2";
 import { MenuBar } from "neetoui/v2/layouts";
-import { Search, Plus, Settings } from "neetoui_icons";
 
 export default function Tabs({
   setIsSearchCollapsed,
@@ -11,10 +11,11 @@ export default function Tabs({
   tabs,
   segments,
   tags,
+  isTabsMenuOpen,
 }) {
   return (
     <>
-      <MenuBar showMenu={true} title={title}>
+      <MenuBar showMenu={isTabsMenuOpen} title={title}>
         {tabs &&
           tabs.map((tab, index) => (
             <MenuBar.Block label={tab.label} count={tab.count} key={index} />

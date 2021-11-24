@@ -4,7 +4,7 @@ import { Formik, Form } from "formik";
 import { Toastr, Button } from "neetoui/v2";
 import { Input, Select } from "neetoui/v2/formik";
 
-import { ROLE_DROPDOWN_VALUES } from "constants/contacts";
+import { ROLE_DROPDOWN_VALUES } from "components/Dashboard/Contacts/constants";
 import formInitialValues from "constants/formInitialValues";
 import formValidationSchemas from "constants/formValidationSchemas";
 
